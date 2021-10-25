@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { FunctionComponent, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
@@ -87,7 +88,7 @@ interface StickyTopBarProps {
 
 const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     barPosition = 'absolute',
-    headerContainerClasses = "",
+    headerContainerClasses = "w-100",
     summaryContent = <div>
       Who Cares.
     </div>,
@@ -100,12 +101,12 @@ const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     healthiPatientName = 'José Pereira Andrade',
     healthiPatientAge= '92 anos',
     healthiPatientSNS = '001',
-    healthiPatientEntity = 'Por definir',
+    healthiPatientEntity = ' Por definir',
     healthiReportIcon = <ReportProblemIcon
     id={'popoverbutton'}
     aria-owns={'mouse-over-popover'}
     aria-haspopup="true"
-    className={`ml-4`}
+    className={`ms-4`}
     style={{color: "#FF9800"}}></ReportProblemIcon>,
     detailsContentOne = <div style={{display: 'grid', gridGap: 5, fontSize: 14, whiteSpace: 'nowrap', gridTemplateColumns: 'min-content auto min-content auto'}}>
     <div className={`fw-bold`}>Nacionalidade</div>
@@ -118,7 +119,7 @@ const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     <div className={`ps-2`}>00000000012345678914</div>
 </div>,
 detailsContentSecond = <>
-    <Typography variant="h6" className={`fw-bold`}>
+    <Typography variant="h6" style={{fontSize: '1rem'}} className={`fw-bold`}>
         Benefícios
     </Typography>
     <div className={`row`} style={{fontSize: 14}}>
@@ -139,7 +140,7 @@ detailsContentSecond = <>
             </div>
         </div>
     </div>
-    <Typography variant="h6" className={`fw-bold mt-2`}>
+    <Typography variant="h6"  style={{fontSize: '1rem'}} className={`fw-bold mt-2`}>
         Regimes de Exceção
     </Typography>
     <div className={`pt-2`} style={{display: 'grid', gridGap: 5, fontSize: 14, whiteSpace: 'nowrap', gridTemplateColumns: 'min-content auto'}}>
@@ -148,10 +149,10 @@ detailsContentSecond = <>
     </div>
 </>,
 detailsContentThird = <>
-    <Typography variant="h6" className={`fw-bold d-inline`}>
+    <Typography variant="h6" style={{fontSize: '1rem'}} className={`fw-bold d-inline`}>
         Alergias
     </Typography>
-    <IconButton size='small' disableFocusRipple disableRipple style={{right: 10, zIndex: 1, position: 'absolute'}} color="primary" aria-label="save">
+    <IconButton size='small' disableFocusRipple disableRipple style={{right: 10, zIndex: 1, position: 'absolute', marginTop: -10}} color="primary" aria-label="save">
     <EditIcon />
     </IconButton>
     <div style={{fontSize: 14}}>
@@ -228,6 +229,7 @@ detailsContentThird = <>
       width: 40,
       height: 40,
       boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
+      objectFit: 'cover'
     },
 
     rightZero:{
