@@ -378,7 +378,7 @@ detailsContentThird = <>
                     </div>
                 </div>
                 :
-                {summaryContent}
+                summaryContent
             }
         </AccordionSummary>
         <AccordionDetails className={`${classes.root} pt-0`}>
