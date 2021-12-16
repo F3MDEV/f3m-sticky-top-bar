@@ -150,10 +150,10 @@ detailsContentSecond = <>
 </>,
 detailsContentThird = <>
     <Typography variant="h6" style={{fontSize: '1rem'}} className={`fw-bold d-inline`}>
-        Alergias
+      Alergias
     </Typography>
     <IconButton size='small' disableFocusRipple disableRipple style={{right: 10, zIndex: 1, position: 'absolute', marginTop: -10}} color="primary" aria-label="save">
-    <EditIcon />
+      <EditIcon />
     </IconButton>
     <div style={{fontSize: 14}}>
         <span style={{fontStyle: 'italic'}}>Sem alergias.</span>
