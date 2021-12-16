@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { FunctionComponent, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import IconButton from '@material-ui/core/IconButton';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import IconButton from '@mui/material/IconButton';
 
 //ICONS
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
