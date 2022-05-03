@@ -18,5 +18,5 @@ export default {
       sass({ insert: true }),
       typescript({ objectHashIgnoreUnknownHack: true })
     ],
-    external: ['react', 'react-dom', '@material-ui/core', '@mui/icons-material', 'bootstrap']
+    external: ['react', 'react-dom', '@material-ui/core', '@mui/icons-material', 'bootstrap', '@mui/material', '@emotion/react', '@emotion/styled']
   }

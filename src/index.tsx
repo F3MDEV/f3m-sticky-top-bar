@@ -241,7 +241,7 @@ detailsContentThird = <>
   const [isDashedBoardThirdContentActive] = useState(isDashedBoardThirdContentInserted)
   const [openAccordion, setOpenAccordion] = useState(false)
 
-  const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
+  const useStyles = makeStyles(() => ({
     root:{
         '&.MuiAccordion-root':{
             backgroundColor: '#f8f8f8',
