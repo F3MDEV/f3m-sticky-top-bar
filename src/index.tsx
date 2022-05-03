@@ -60,44 +60,53 @@ interface StickyTopBarProps {
    * Insert patient entity (isHealthiPatientSummaryActive value has to be "true").
   */
   healthiPatientEntity?: string
-  /**
-   * Insert report icon (isHealthiPatientSummaryActive value has to be "true").
-  */
-  healthiReportIcon?: React.ReactNode
-  /**
+    /**
+     * Insert report icon (isHealthiPatientSummaryActive value has to be "true").
+    */
+    healthiReportIcon?: React.ReactNode
+    /**
    * Insert badges of the problems that patient's have.
   */
   patientBadges?: React.ReactNode
-  /**
-   * Insert elements in the first section of details.
-  */
-  detailsContentOne?: React.ReactNode
     /**
-   * Insert elements in the second section of details.
-  */
-  detailsContentSecond?: React.ReactNode
+     * Insert elements in the first section of details.
+    */
+    detailsContentOne?: React.ReactNode
+      /**
+     * Insert elements in the second section of details.
+    */
+    detailsContentSecond?: React.ReactNode
+     /**
+     * Insert elements in the third section of details.
+    */
+    detailsContentThird?: React.ReactNode
+     /**
+     * Insert dashed board between first and second detail section.
+    */
+    isDashedBoardSecondContentInserted?: boolean
     /**
-   * Insert elements in the third section of details.
-  */
-  detailsContentThird?: React.ReactNode
+     * Insert dashed board between second and third detail section.
+    */
+    isDashedBoardThirdContentInserted?: boolean
     /**
-   * Insert dashed board between first and second detail section.
-  */
-  isDashedBoardSecondContentInserted?: boolean
-  /**
-   * Insert dashed board between second and third detail section.
-  */
-  isDashedBoardThirdContentInserted?: boolean
-  /**
    * Insert patient name (isHealthiPatientSummaryActive value has to be "true").
   */
    healthiPatientNickname?: string
-}
+  }  
+
+  const episodes = [
+    {
+      value: '30/01/2021 (Internamento)',
+    },
+    {
+      value: '21/04/2021 (Internamento)',
+    }
+  ];
 
 const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     barPosition = 'absolute',
     headerContainerClasses = "w-100",
-    isHealthiPatientSummaryActive = true,
+    isHealthiPatientSummaryActive = false,
     healthiBadgePatientPhoto = <span className={`badge rounded-pill bg-danger`} 
     style={{position: 'absolute', left: '50%', transform: 'translateX(-50%)', zIndex: 1, 
     bottom: -2, fontSize: '7px', textTransform: 'capitalize', width: '42px', maxHeight: '13px'}}>
@@ -123,7 +132,7 @@ const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
       <Box component="div" className="text-center" sx={{  width: 20, height: 20, marginRight: '5px', borderRadius: '50%', background: '#04A0AA', color: '#fff', fontFamily: 'Open Sans', fontWeight: 600, fontSize: 8, lineHeight: 2.4 }}>4</Box>
       <Box component="div" className="text-center" sx={{  width: 20, height: 20, marginRight: '5px', borderRadius: '50%', background: '#04A0AA', color: '#fff', fontFamily: 'Open Sans', fontWeight: 600, fontSize: 8, lineHeight: 2.4 }}>5</Box>
     </>,
-    detailsContentOne = <div style={{display: 'grid', color: '#444444', gridGap: 5, fontSize: 14, whiteSpace: 'nowrap', gridTemplateColumns: 'min-content auto min-content auto'}}>
+    detailsContentOne = <div style={{display: 'grid', gridGap: 5, fontSize: 14, whiteSpace: 'nowrap', gridTemplateColumns: 'min-content auto min-content auto'}}>
     <div className={`fw-bold`}>Nacionalidade</div>
     <div className={`ps-2`}>Portuguesa</div>
     <div className={`fw-bold`}>Nº de Beneficiário</div>
@@ -164,11 +173,11 @@ detailsContentSecond = <>
     </div>
 </>,
 detailsContentThird = <>
-    <Typography variant="h6" style={{fontSize: '1rem', color: '#444444'}} className={`fw-bold d-inline`}>
-        Alergias
+    <Typography variant="h6" style={{fontSize: '1rem'}} className={`fw-bold d-inline`}>
+      Alergias
     </Typography>
     <IconButton size='small' disableFocusRipple disableRipple style={{right: 10, zIndex: 1, position: 'absolute', marginTop: -10}} color="primary" aria-label="save">
-    <EditIcon />
+      <EditIcon />
     </IconButton>
     <div style={{fontSize: 14, color: '#444444'}}>
         <span style={{fontStyle: 'italic'}}>Sem alergias.</span>
@@ -202,18 +211,14 @@ detailsContentThird = <>
               select
               label="Episódio"
               value='30/01/2021 (Internamento)'
+              /* value={episode}
+              onChange={handleChange} */
               variant="standard"
               InputLabelProps={{
                   sx:{fontWeight: 'bold', color: '#444444'}
               }}
               >
-              {[{
-                  value: '30/01/2021 (Internamento)',
-                },
-                {
-                  value: '21/04/2021 (Internamento)',
-                }
-              ].map((option) => (
+              {episodes.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                       {option.value}
                   </MenuItem>
@@ -233,157 +238,165 @@ detailsContentThird = <>
   const [isDashedBoardThirdContentActive] = useState(isDashedBoardThirdContentInserted)
   const [openAccordion, setOpenAccordion] = useState(false)
 
-  const useStyles = makeStyles(() => ({
-    root:{
-        '&.MuiAccordion-root':{
-            backgroundColor: '#f8f8f8',
-        },
-        '&.MuiFormGroup-root':{
-            maxHeight: 132,
-            display: "grid",
-            overflow: "auto"
-        },
-        '&.MuiTextField-root':{
-            backgroundColor: "#ffffff",
-            '& .MuiInputBase-input':{
-            backgroundColor: "#ffffff",
-            }
-        },
-        '& .MuiAccordionSummary-content':{
-          width: '100%'
-        },
-       
-        '&.MuiAccordionDetails-root':{
-            display: 'block',
-            '& .MuiFormControl-root':{
-            '& .MuiFilledInput-root':{
-                '& .MuiSelect-filled.MuiSelect-filled':{
-                backgroundColor: "#ffffff",
-                }
-            }
-            }
-            
-        },
-        '&.MuiSelect-root':{
-            backgroundColor: "#ffffff",
+const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
+  root:{
+    '&.MuiAccordion-root':{
+        backgroundColor: '#f8f8f8',
+    },
+    '&.MuiFormGroup-root':{
+        maxHeight: 132,
+        display: "grid",
+        overflow: "auto"
+    },
+    '&.MuiTextField-root':{
+        backgroundColor: "#ffffff",
+        '& .MuiInputBase-input':{
+        backgroundColor: "#ffffff",
         }
     },
-    large: {
-      width: 40,
-      height: 40,
-      boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
-      objectFit: 'cover'
+    '& .MuiAccordionSummary-content':{
+      width: '100%'
     },
-
-    rightZero:{
-      position: 'absolute',
-      right: 0,
+    
+    '&.MuiAccordionDetails-root':{
+        display: 'block',
+        '& .MuiFormControl-root':{
+        '& .MuiFilledInput-root':{
+            '& .MuiSelect-filled.MuiSelect-filled':{
+            backgroundColor: "#ffffff",
+            }
+        }
+        }
+        
     },
-    marginIconBigHeaderDetails:{
-      //marginLeft: 8,
-      marginRight: 8,
-    },
-    paddingIconBigHeaderDetails:{
-      padding: 8,
-    },
-    fontSize10:{
-      fontSize: 11,
-    },
-    flex:{
-      display: 'flex'
-    },
-    label:{
-      marginBottom: 0,
-      marginLeft: 0,
-      maxHeight: '35px'
-    },
-    rootSelectForm:{
-      "& .MuiFilledInput-inputMarginDense":{
-        paddingBottom: 6.6
-      },
-      "& .MuiInputLabel-filled.MuiInputLabel-marginDense": {
-        transform: "translate(12px, 18px) scale(1)"
-      },
-      "& .MuiInputLabel-filled.MuiInputLabel-shrink.MuiInputLabel-marginDense": {
-        transform: "translate(12px, 8px) scale(0.75)"
-      },
-      "& .MuiSelect-root":{
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4
-      }
-    },
-    rootTextField:{
-      "& .MuiFilledInput-root":{
-        height: 48
-      }
-    },
-    rootDatePickerForm:{
-      "& .MuiFilledInput-root":{
-        height: 48
-      } 
-    },
-    firstButton:{
-      top: 70,
-    },
-    thirdButton:{
-      top: 335,
-    },
-    dashedBorder:{
-      borderTop: "dashed #999999 1px", 
-      strokeWidth: 1
-    },
-    allergiesContainer:{
-      display: 'grid',
-      gridGap: 5,
-      fontSize: 14,
-      whiteSpace: 'nowrap',
-      gridTemplateColumns: 'min-content min-content',
-    },
-
-    popover: {
-      pointerEvents: 'none',
-    },
-    paper:{
-      "&.MuiPopover-paper":{
-        paddingTop: 8,
-        fontSize: 12
-      }
-    },
-    allergiesList:{
-      fontSize: 12,
-      paddingTop: 8,
-      marginLeft: 10,
-      paddingLeft: 10,
-      marginRight: 10,
-      paddingRight: 10,
-    },
-    allergiesTitle:{
-      paddingLeft: 5,
-      paddingTop: 15,
-      marginTop: 15,
-      marginLeft:5
-    },
-    sticky:{
-      top: 0,
-      zIndex: 2,
-      position: barPosition,
-    },
-    bigHeader:{
-        marginLeft: '0 !important',
-        marginRight: '0 !important',
-        alignItems: 'center',
-        borderBottom: '1px dashed #d2d2d2'
-    },
-    photoNameGroup:{
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: 15
-    },
-    photoGroup:{
-        position: 'relative',
-        marginRight: 12,
-        filter: 'drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.22))'
+    '&.MuiSelect-root':{
+        backgroundColor: "#ffffff",
     }
+  },
+  small: {
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+  boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
+  },
+  smallBadge:{
+  width: theme.spacing(4),
+  },
+  large: {
+  width: 40,
+  height: 40,
+  boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
+  objectFit: 'cover'
+  },
+
+  rightZero:{
+  position: 'absolute',
+  right: 0,
+  },
+  marginIconBigHeaderDetails:{
+  //marginLeft: 8,
+  marginRight: 8,
+  },
+  paddingIconBigHeaderDetails:{
+  padding: 8,
+  },
+  fontSize10:{
+  fontSize: 11,
+  },
+  flex:{
+  display: 'flex'
+  },
+  label:{
+  marginBottom: 0,
+  marginLeft: 0,
+  maxHeight: '35px'
+  },
+  rootSelectForm:{
+  "& .MuiFilledInput-inputMarginDense":{
+    paddingBottom: 6.6
+  },
+  "& .MuiInputLabel-filled.MuiInputLabel-marginDense": {
+    transform: "translate(12px, 18px) scale(1)"
+  },
+  "& .MuiInputLabel-filled.MuiInputLabel-shrink.MuiInputLabel-marginDense": {
+    transform: "translate(12px, 8px) scale(0.75)"
+  },
+  "& .MuiSelect-root":{
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
+  }
+  },
+  rootTextField:{
+  "& .MuiFilledInput-root":{
+    height: 48
+  }
+  },
+  rootDatePickerForm:{
+  "& .MuiFilledInput-root":{
+    height: 48
+  } 
+  },
+  firstButton:{
+  top: 70,
+  },
+  thirdButton:{
+  top: 335,
+  },
+  dashedBorder:{
+  borderTop: "dashed #999999 1px", 
+  strokeWidth: 1
+  },
+  allergiesContainer:{
+  display: 'grid',
+  gridGap: 5,
+  fontSize: 14,
+  whiteSpace: 'nowrap',
+  gridTemplateColumns: 'min-content min-content',
+  },
+
+  popover: {
+  pointerEvents: 'none',
+  },
+  paper:{
+  "&.MuiPopover-paper":{
+    paddingTop: 8,
+    fontSize: 12
+  }
+  },
+  allergiesList:{
+  fontSize: 12,
+  paddingTop: 8,
+  marginLeft: 10,
+  paddingLeft: 10,
+  marginRight: 10,
+  paddingRight: 10,
+  },
+  allergiesTitle:{
+  paddingLeft: 5,
+  paddingTop: 15,
+  marginTop: 15,
+  marginLeft:5
+  },
+  sticky:{
+  top: 0,
+  zIndex: 2,
+  position: barPosition,
+  },
+  bigHeader:{
+    marginLeft: '0 !important',
+    marginRight: '0 !important',
+    alignItems: 'center',
+    borderBottom: '1px dashed #d2d2d2'
+  },
+  photoNameGroup:{
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: 15
+  },
+  photoGroup:{
+    position: 'relative',
+    marginRight: 12,
+    filter: 'drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.22))'
+  }
 }));
 
   const classes = useStyles(); 
@@ -401,11 +414,11 @@ detailsContentThird = <>
         <div style={{width: 'fit-content !important'}} className={`row ${classes.bigHeader} ${classes.sticky} ${headerContainerClasses}`}>
             <Accordion className={`w-100 ${classes.root}`} expanded={openAccordion} onChange={handleChangeAccordion}>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              className={`${classes.root}`}
-              id="panel1a-header">
-              {healthiPatientSummary ? 
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            className={classes.root}
+            id="panel1a-header">
+            {healthiPatientSummary ? 
                   <div className={`col-sm-12 col-md-12 col-lg-9 col-xl-9 ps-0 ${classes.photoNameGroup}`}>
                   <div className={classes.photoGroup}>
                     {healthiBadgePatientPhoto}
