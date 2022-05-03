@@ -14,6 +14,7 @@ import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { MenuItem, TextField } from '@mui/material';
+
 interface StickyTopBarProps {
   /**
    * CSS position of the bar.
