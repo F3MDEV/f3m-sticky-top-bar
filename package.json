@@ -1,6 +1,6 @@
 {
   "name": "f3m-sticky-top-bar",
-  "version": "1.0.8",
+  "version": "1.1.9",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -41,8 +41,8 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.0.4",
-    "@mui/material": "^5.2.4",
-    "@mui/styles": "^5.2.3",
+    "@mui/material": "^5.6.4",
+    "@mui/styles": "^5.6.2",
     "bootstrap": "^5.1.3"
   }
 }
