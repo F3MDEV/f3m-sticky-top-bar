@@ -238,7 +238,7 @@ detailsContentThird = <>
   const [isDashedBoardThirdContentActive] = useState(isDashedBoardThirdContentInserted)
   const [openAccordion, setOpenAccordion] = useState(false)
 
-const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
+const useStyles = makeStyles(() => ({
   root:{
     '&.MuiAccordion-root':{
         backgroundColor: '#f8f8f8',
@@ -272,14 +272,6 @@ const useStyles = makeStyles((theme: { spacing: (arg0: number) => any; }) => ({
     '&.MuiSelect-root':{
         backgroundColor: "#ffffff",
     }
-  },
-  small: {
-  width: theme.spacing(4),
-  height: theme.spacing(4),
-  boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
-  },
-  smallBadge:{
-  width: theme.spacing(4),
   },
   large: {
   width: 40,
