@@ -276,14 +276,6 @@ detailsContentThird = <>
             backgroundColor: "#ffffff",
         }
     },
-    small: {
-      width: theme.spacing(4),
-      height: theme.spacing(4),
-      boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.2)',
-    },
-    smallBadge:{
-      width: theme.spacing(4),
-    },
     large: {
       width: 40,
       height: 40,
