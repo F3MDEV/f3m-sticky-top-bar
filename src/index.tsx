@@ -92,15 +92,6 @@ interface StickyTopBarProps {
   */
    healthiPatientNickname?: string
 }
-  
-const episodes = [
-  {
-    value: '30/01/2021 (Internamento)',
-  },
-  {
-    value: '21/04/2021 (Internamento)',
-  }
-];
 
 const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     barPosition = 'absolute',
@@ -210,14 +201,18 @@ detailsContentThird = <>
               select
               label="Episódio"
               value='30/01/2021 (Internamento)'
-              /* value={episode}
-              onChange={handleChange} */
               variant="standard"
               InputLabelProps={{
                   sx:{fontWeight: 'bold', color: '#444444'}
               }}
               >
-              {episodes.map((option) => (
+              {[{
+                  value: '30/01/2021 (Internamento)',
+                },
+                {
+                  value: '21/04/2021 (Internamento)',
+                }
+              ].map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                       {option.value}
                   </MenuItem>
