@@ -1,22 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { FunctionComponent, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-import Typography from '@material-ui/core/Typography';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import IconButton from '@material-ui/core/IconButton';
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import IconButton from '@mui/material/IconButton';
 //ICONS
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import { MenuItem, TextField } from '@mui/material';
 interface StickyTopBarProps {
   /**
    * CSS position of the bar.
@@ -104,7 +101,6 @@ const episodes = [
     value: '21/04/2021 (Internamento)',
   }
 ];
-
 
 const StickyTopBar: FunctionComponent<StickyTopBarProps>  = ({
     barPosition = 'absolute',
@@ -395,12 +391,6 @@ detailsContentThird = <>
 }));
 
   const classes = useStyles(); 
-
-  const [episode, setEpisode] = React.useState('30/01/2021 (Internamento)');
-
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setEpisode(event.target.value);
-};
 
   const handleChangeAccordion = () => {
     if (openAccordion) {
