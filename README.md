@@ -24,7 +24,7 @@
 </div>
 
 ## Installation
-
+DEPREACTED
 F3M-Sticky-Top-Bar is available as an [npm package](npm i f3m-sticky-top-bar).
 
 ```sh
